@@ -1,0 +1,243 @@
+<body onLoad="moveTo(0,0);resizeTo(screen.width,screen.height);window.print();">
+<table width="700" height="950" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+    <td><font size="1"><em>Resep hanya digunakan di internal RS Sari Asih Karawaci</em></font> &nbsp;&nbsp;</td>
+    <td align="right"  width="10%">FR01R DIT</td>
+</tr>
+  <tr>
+    <td colspan="2"><table width="100%" border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="55%"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          
+          <tr valign="middle" >
+            <td width="16%" align="right" height="70"><img src="images/logo_sa.png" width="53" height="57" alt=""/></td>
+            <td width="84%" align="center"><strong>RUMAH SAKIT SARI ASIH<br />
+          KARAWACI<br /></strong>
+         <font size="1">Jl. Imam Bonjol No.38 Karawaci-Kota Tangerang 15113<br />
+		  Telp. (021) 552 2794 (Hunting) Fax. (021) 552 5214</font></td>
+          </tr> 
+        </table></td>
+        <td width="45%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td align="right">{VCODE}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>No. Registrasi</td>
+            <td>:</td>
+            <td>{VNOREG}</td>
+          </tr>
+          
+          <tr>
+            <td width="3%">&nbsp;</td>
+            <td width="30%">Nama Pasien</td>
+            <td width="2%">:</td>
+            <td width="65%">{VNAMA}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>Tgl. Lahir / Umur</td>
+            <td>:</td>
+            <td>{VTGL_LAHIR} / {VUMUR}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>No. RM</td>
+            <td>:</td>
+            <td>{VNORM}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td></td>
+            <td>&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top"><table width="100%" height="726" border="1" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="65%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="7%" height="10" align="center">&nbsp;</td>
+            <td colspan="2" align="center"><h3><strong>RESEP</strong></h3></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td width="87%"><font size="4">
+            <pre>{VNOTE_RESEP}
+            <br></br>
+    ========== end of Receipt ========== 
+            </pre></font></td>
+            <td width="6%">&nbsp;</td>
+          </tr>
+        </table></td>
+        <td width="35%" valign="top"><table width="100%" height="730" border="1" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="45%">&nbsp;&nbsp;Berat Badan</td>
+            <td width="2%">:</td>
+            <td width="53%">&nbsp;</td>
+          </tr>
+          
+          <tr>
+            <td>&nbsp;&nbsp;Ruangan</td>
+            <td>:</td>
+            <td>{VRUANG}</td>
+          </tr>
+        </table></td>
+          </tr>
+          <tr>
+            <td height="40" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr  valign="middle" align="center">
+                <td height="30" valign="bottom"><u>dr. : {VDOKTER}</u></td>
+              </tr>
+              <tr valign="top" align="center">
+                <td height="20"><pre><font size="1">SIP. : {VSIP}</font></pre></td>
+              </tr>
+            </table>
+              </td>
+          </tr>
+          <tr>
+            <td>&nbsp;&nbsp;Tgl. : {VDATE}</td>
+          </tr>
+          <tr>
+            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td valign="top">&nbsp;&nbsp;Riwayat Alergi Obat :</td>
+              </tr>
+              <tr>
+                <td height="30" align="left" valign="top">&nbsp;&nbsp;{VALERGI}
+                <br></br><br></br>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td valign="top"><table width="100%" height="396" border="1" cellpadding="0" cellspacing="0">
+              <tr align="center" valign="top">
+                <td width="70%"><strong>PENELAAHAN RESEP:</strong></td>
+                <td width="15%"><strong>Ya</strong></td>
+                <td width="15%"><strong>Tidak</strong></td>
+              </tr>
+              <tr>
+                <td valign="top"> <font size="1">
+                <table width="100%" height="267" border="0" cellpadding="0" cellspacing="0">
+                   <tr valign="top">
+                    <td  width="10%" align="right">1.&nbsp;</td>
+                    <td width="90%">Tulisan dokter, jelas</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">2.&nbsp;</td>
+                    <td>Identitas pasien, benar</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">3.&nbsp;</td>
+                    <td>Obat, benar</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">4.&nbsp;</td>
+                    <td>Dosis, benar</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">5.&nbsp;</td>
+                    <td>Jumlah obat, benar</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">6.&nbsp;</td>
+                    <td>Waktu dan frekuensi pemberian obat</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">7.&nbsp;</td>
+                    <td>Cara Pemberian obat, benar</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">8.&nbsp;</td>
+                    <td>Polifarmasi, ada</td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">9.&nbsp;</td>
+                    <td>D<font size="2">uplikasi terapi, ada</font></td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">10.&nbsp;</td>
+                    <td>ESO <font size="2">yang mungkin terjadi, ada</font></td>
+                  </tr>
+                  <tr valign="top">
+                    <td align="right">11.&nbsp;</td>
+                    <td>Interaksi obat, ada</td>
+                  </tr>
+                </table>
+                </font>                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;&nbsp;H (Harga)</td>
+                <td colspan="2">&nbsp;</td>
+                </tr>
+              <tr>
+                <td>&nbsp;&nbsp;T (Teknik)</td>
+                <td colspan="2">&nbsp;</td>
+                </tr>
+              <tr>
+                <td>&nbsp;&nbsp;K (Kemas)</td>
+                <td colspan="2">&nbsp;</td>
+                </tr>
+              <tr>
+                <td>&nbsp;&nbsp;P (Penyerahan)</td>
+                <td colspan="2">&nbsp;</td>
+                </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="137"><table width="100%" height="128" border="0" cellpadding="0" cellspacing="0">
+              <tr align="center" valign="top">
+                <td>Menerima Obat Beserta Informasi</td>
+              </tr>
+              <tr align="center">
+                <td height="30"><p>&nbsp;</p>
+                  <br></br>
+              </tr>
+              <tr align="center">
+                <td>(Pasien / Keluarga)</td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><table width="100%" border="1" cellspacing="0" cellpadding="0">
+          
+          <tr>
+            <td colspan="2" align="center" height="30">Perubahan Resep</td>
+            <td width="16%" rowspan="2" align="center">Petugas Farmasi</td>
+            <td width="16%" rowspan="2" align="center">Disetujui</td>
+            </tr>
+          <tr>
+            <td align="center" width="34%" height="30">Tertulis</td>
+            <td width="34%" align="center">Menjadi</td>
+            </tr>
+          <tr >
+            <td width="34%" height="50"><p>&nbsp;</p>
+              <p>&nbsp;</p></td>
+            <td width="34%">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+        </table></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+</body>

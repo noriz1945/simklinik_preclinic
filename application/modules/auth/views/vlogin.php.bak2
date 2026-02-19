@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login Simklinik</title>
+
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        margin:0;
+        padding:0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(180deg, #880e4f, #6a0040, #3a0023);
+        height:100vh;
+        width:100vw;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+        position:relative;
+    }
+
+    /* PINK PARTICLE */
+    .particle {
+        position:absolute;
+        background: rgba(255, 99, 175, 0.85);
+        border-radius: 50%;
+        filter: drop-shadow(0 0 12px #ff4fa8);
+        animation: floatUp 7s infinite ease-in-out;
+    }
+
+    @keyframes floatUp {
+        0%   { transform: translateY(0) scale(1); opacity:0.5; }
+        50%  { opacity:1; }
+        100% { transform: translateY(-120vh) scale(0.7); opacity:0; }
+    }
+
+    /* LOGIN BOX – PINK TRANSPARAN */
+    .login-box {
+        width: 95%;
+        max-width: 480px;
+        padding: 32px 25px;
+        background: rgba(255, 50, 130, 0.20); /* pink transparan lembut */
+        border: 2px solid rgba(255, 120, 180, 0.45);
+        border-radius: 22px;
+        box-shadow: 0 0 25px rgba(255, 100, 160, 0.40);
+        backdrop-filter: blur(10px);
+
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:center;
+        text-align:center;
+
+        animation: fadeIn 0.8s ease;
+        position:relative;
+        z-index:10;
+    }
+
+    @keyframes fadeIn {
+        from { opacity:0; transform:scale(0.93); }
+        to   { opacity:1; transform:scale(1); }
+    }
+
+    /* LOGO */
+    .login-logo {
+        width:140px;
+        margin-bottom:18px;
+        animation: logoGlow 2.8s infinite ease-in-out;
+    }
+
+    @keyframes logoGlow {
+        0%   { filter: drop-shadow(0 0 6px #ff99d6); }
+        50%  { filter: drop-shadow(0 0 20px #ff4fa8); }
+        100% { filter: drop-shadow(0 0 6px #ff99d6); }
+    }
+
+    /* TITLE */
+    .title {
+        font-size: 33px;
+        font-weight:bold;
+        color:#ffb3df;
+        text-shadow:0 0 15px rgba(255, 120, 180, 0.6);
+        margin-bottom:6px;
+    }
+
+    .subtitle {
+        font-size:15px;
+        color:#ffd9ec;
+        margin-bottom:28px;
+    }
+
+    /* INPUT */
+    .input-box {
+        width:100%;
+        background:rgba(255,255,255,0.12);
+        border:2px solid rgba(255, 110, 170, 0.50);
+        padding:15px;
+        border-radius:14px;
+        margin-bottom:18px;
+        color:white;
+        font-size:19px;
+        letter-spacing:0.5px;
+        transition:0.25s;
+    }
+
+    .input-box::placeholder {
+        font-size:18px;
+        color:#ffe3f3;
+    }
+
+    .input-box:focus {
+        background:rgba(255,255,255,0.18);
+        border-color:#ff4fa8;
+        box-shadow:0 0 12px rgba(255, 100, 160, 0.6);
+        outline:none;
+    }
+
+    /* BUTTON */
+    .btn-login {
+        width:100%;
+        padding:17px;
+        background: linear-gradient(90deg,#ff4fa8,#ff85c6,#ff4fa8);
+        background-size:200% 200%;
+        color:white;
+        font-weight:bold;
+        border-radius:14px;
+        border:none;
+        font-size:20px;
+        letter-spacing:1px;
+        cursor:pointer;
+        box-shadow:0 0 15px rgba(255, 100, 160, 0.7);
+        animation: btnGlow 4s infinite linear;
+        transition:0.25s;
+    }
+
+    @keyframes btnGlow {
+        0% { background-position:0% 50%; }
+        50% { background-position:100% 50%; }
+        100% { background-position:0% 50%; }
+    }
+
+    .btn-login:hover {
+        transform:scale(1.03);
+        box-shadow:0 0 18px rgba(255, 140, 190, 0.9);
+    }
+
+    /* MOBILE */
+    @media(max-width:500px){
+        .login-box { width:95%; padding:28px 22px; }
+        .title { font-size:34px; }
+        .input-box { padding:17px; font-size:21px; }
+        .btn-login { padding:20px; font-size:22px; }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- PARTICLES -->
+<script>
+    for (let i = 0; i < 60; i++) {
+        let p = document.createElement("div");
+        p.className = "particle";
+
+        let size = Math.random() * 12 + 6;
+        p.style.width = size + "px";
+        p.style.height = size + "px";
+
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDelay = (Math.random() * 6) + "s";
+        p.style.opacity = Math.random();
+
+        document.body.appendChild(p);
+    }
+</script>
+
+<div class="login-box">
+
+    <img class="login-logo" src="<?= base_url('assets/img/logo2.png'); ?>">
+
+    <div class="title">SIMKLINIK</div>
+    <div class="subtitle">Sistem Informasi Klinik</div>
+
+    <form method="post" action="<?= base_url('auth/do_login'); ?>">
+        <input type="text" class="input-box" name="username" placeholder="Username" required>
+        <input type="password" class="input-box" name="password" placeholder="Password" required>
+
+        <button class="btn-login">MASUK</button>
+    </form>
+
+</div>
+
+</body>
+</html>

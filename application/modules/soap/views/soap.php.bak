@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <?php $this->theme->head('theme_default'); ?>
+      <?php require_once(APPPATH.'../assets/app_hn/soapfnc/mnu-cmp-css.php');?>
+      <title>SOAP <?php echo $id_reg_set; ?></title>
+   </head>
+   <body>
+      <?php $this->theme->wrapper_open('theme_default'); ?>
+      <div class="loader-bg">
+         <div class="loader-bar"></div>
+      </div>
+      <div id="pcoded" class="pcoded">
+         <div class="pcoded-overlay-box"></div>
+         <div class="pcoded-container navbar-wrapper">
+            <div class="pcoded-main-container">
+               <div class="pcoded-wrapper">
+                  <div class="pcoded-content">
+                     <div class="page-header card">
+                        <div class="row align-items-end">
+                           <div class="col-lg-8">
+                              <div class="page-header-title">
+                                 <i class="feather icon-feather bg-c-blue"></i>
+                                 <div class="d-inline">
+                                    <h5>SOAP</h5>
+                                    <span>klik row nomor registrasi untuk melihat soap pasien</span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-lg-4">
+                              <div class="page-header-breadcrumb">
+                                 <ul class=" breadcrumb breadcrumb-title">
+                                    <li class="breadcrumb-item">
+                                       <a href="<?php echo base_url('./'); ?>"><i class="feather icon-home"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                       <a href="<?php echo base_url('soap/'); ?>">SOAP.</a>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="pcoded-inner-content">
+                        <div class="main-body">
+                           <div class="page-wrapper">
+                              <div class="page-body">
+                                 <!---idenasmcppt-->
+                                 <div class="row">
+                                    <div class="col-sm-6">
+                                       <div class="card">
+                                          <div class="card-header">
+                                             <h5>IDENTITAS PASIEN</h5>
+                                          </div>
+                                          <div class="card-block">
+                                             <table>
+                                                <tbody>
+                                                   <tr>
+                                                      <td>ID Reg</td>
+                                                      <td>&nbsp;&nbsp;:&nbsp;</td>
+                                                      <td><?php echo $idreg; ?></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>ID Pasien</td>
+                                                      <td>&nbsp;&nbsp;:&nbsp;</td>
+                                                      <td><?php echo $idpasien; ?></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Nama</td>
+                                                      <td>&nbsp;&nbsp;:&nbsp;</td>
+                                                      <td><?php echo $namapasien; ?></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Umur</td>
+                                                      <td>&nbsp;&nbsp;:&nbsp;</td>
+                                                      <td><?php echo $umur; ?></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Tanggal Lahir</td>
+                                                      <td>&nbsp;&nbsp;:&nbsp;</td>
+                                                      <td><?php echo $tgl_lahir; ?></td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Gender</td>
+                                                      <td>&nbsp;&nbsp;:&nbsp;</td>
+                                                      <td><?php echo $gender; ?></td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!--assesment & cppt-->
+                                    <div class="col-lg-6">
+                                       <div class="card">
+                                          <div class="card-header">
+                                             <h5 class="card-header-text">CPPT VIEWER</h5>
+                                          </div>
+                                          <div id="cppt_viewer"></div>
+                                          <div class="preview_before"></div>
+                                          <div class="preview_after"></div>
+                                       </div>
+                                    </div>
+                                    <!--end assesment & cppt-->
+                                 </div>
+                                 <!--end idenasmcppt-->
+                                 <!--tab-->
+                                 <div class="row">
+                                    <div class="col-sm-12">
+                                       <div class="card">
+                                          <div class="card-header">
+                                             <h5>CPPT</h5>
+                                          </div>
+                                          <input type="text" id="idregset" name="idregset" value="<?php echo $id_reg; ?>" readonly hidden> 
+                                          <input type="text" id="id_pasien" name="id_pasien" value="<?php echo $id_pasien; ?>" readonly hidden>
+                                          <div class="card table-card">
+                                             <div class="card-block">
+                                                <form id="frm_cppt_ri_dokter" method="post" action="<?php echo base_url('soap/act_cppt/'.$id_reg.'/'.$id_pasien); ?>" novalidate enctype="multipart/form-data">
+                                                   <input type="hidden" id="id_asmri" name="id_asmri">
+                                                   <input type="hidden" id="sql_command" name="sql_command">
+                                                   <input type="hidden" id="kategori" name="kategori" value="CPPT">
+                                                   <input type="hidden" id="edit_set" name="edit_set">
+                                                   <input type="text" name="tgl_pengkajian" id="tgl_pengkajian" class="form-control" value="<?php echo date('Y-m-d H:i:s'); ?>" hidden>
+                                                   <h3 class="pnl-head-3" style="margin-top:30px" id="sini_listnyah">SUBJECTIVE</h3>
+                                                   <div class="row pnl">
+                                                      <div class="col-md-12">
+                                                         <div class="form-group">
+                                                            <label class="control-label">Keluhan Utama :</label>
+                                                            <textarea class="form-control input-focus area-scroll" id="keluhan_utama" name="keluhan_utama" rows="5"
+                                                               placeholder="Keluhan Utama"></textarea>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <br>
+                                                   <h3 class="pnl-head-3">OBJECTIVE</h3>
+                                                   <div class="row pnl pnl-obj">
+                                                      <div class="col-md-12">
+                                                         <div class="form-group">
+                                                            <textarea class="form-control input-focus area-scroll" id="objective" name="objective" rows="5"
+                                                               placeholder="Objective"></textarea>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <br>
+                                                   <h3 class="pnl-head-3">ASSESMENT</h3>
+                                                   <div class="row pnl pnl-asm">
+                                                      <div class="col-md-12">
+                                                         <div class="form-group">
+                                                            <textarea class="form-control input-focus area-scroll" id="assesment" name="assesment" rows="5"
+                                                               placeholder="Objective"></textarea>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <h3 class="pnl-head-3" style="margin-top:30px">PLANNING</h3>
+                                                   <div class="row pnl pnl-plan">
+                                                      <div class="col-md-12">
+                                                         <div class="form-group">
+                                                            <textarea class="form-control input-focus area-scroll" id="planning" name="planning" rows="5"
+                                                               placeholder="Objective"></textarea>
+                                                         </div>
+                                                      </div>
+                                                      <!--tindakan-->
+                                                      <input type="text" class="form-control" id="idregset" name="idregset" readonly value="<?php echo $id_reg; ?>" hidden>
+                                                      <input type="text" class="form-control" id="idrmset" name="idrmset" readonly value="<?php echo $id_pasien; ?>" hidden>
+                                                      <input type="text" class="form-control" id="nameset" name="nameset" readonly value="<?php echo $id_pasien; ?>" hidden>
+                                                      <div class="col-md-2">
+                                                         <div class="form-group">
+                                                            <label class="control-label">Input Tindakan :</label>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-5">
+                                                         <div class="form-group">
+                                                            <div class="form-group row">
+                                                               <div class="col-sm-12">
+                                                                  <div class="col-sm-12" style="margin-top:5px; border:#CCC thin solid; padding:5px;">
+                                                                     <div class="form-group row">
+                                                                        <label class="col-sm-4 col-form-label">Nama Tindakan</label>
+                                                                        <div class="col-sm-8">
+                                                                           <div class="ui-widget">
+                                                                              <input id="nama_tindakan_cppt" name="nama_tindakan_cppt" class="form-control">
+                                                                              <input type="hidden" id="id_act_cppt" name="id_act_cppt" class="hidden" readonly>
+                                                                           </div>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="form-group row">
+                                                                        <label class="col-sm-4 col-form-label">Harga</label>
+                                                                        <div class="col-sm-8">
+                                                                           <input id="price_cppt" name="price_cppt" class="form-control autonumber fill" data-reverse>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="form-group row">
+                                                                        <label class="col-sm-4 col-form-label">Qty</label>
+                                                                        <div class="col-sm-8">
+                                                                           <input id="qty_cppt" name="qty_cppt" class="form-control autonumber fill" data-reverse>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="form-group row">
+                                                                        <label class="col-sm-4 col-form-label">Grup</label>
+                                                                        <div class="col-sm-8">
+                                                                           <input id="group_cppt" name="group_cppt" class="form-control" readonly>
+                                                                           <input type="hidden" id="id_group_cppt" name="id_group_cppt" class="hidden" readonly>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="form-group row">
+                                                                        <label class="col-sm-4 col-form-label">Sub Grup</label>
+                                                                        <div class="col-sm-8">
+                                                                           <input id="subgroup_cppt" name="subgroup_cppt" class="form-control" readonly>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="form-group row">
+                                                                        <label class="col-sm-4 col-form-label">Nakes</label>
+                                                                        <div class="col-sm-8">
+                                                                           <?php echo $dropdown_id_dokter ?>
+                                                                        </div>
+                                                                     </div>
+                                                                     <div class="form-group row" style="margin-top:10px;">
+                                                                        <div class="col-sm-6 text-left">
+                                                                        </div>
+                                                                        <div class="col-sm-6 text-right">
+                                                                           <button type="button" class="btn btn-primary" id="addrow_cppt"><i class="fa fa-plus"></i></button>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-5">
+                                                         <div class="form-group">
+                                                            <div class="form-group row">
+                                                               <div class="col-sm-12">
+                                                                  <div class="col-sm-12" style="margin-top:5px; border:#CCC thin solid; padding:5px;">
+                                                                     <table class="table table-bordered table-hover table-striped table-responsive styled-table">
+                                                                        <thead>
+                                                                           <tr>
+                                                                              <th scope="col">Tindakan</th>
+                                                                              <th scope="col">Harga</th>
+                                                                              <th scope="col">Qty</th>
+                                                                              <th scope="col">Grup</th>
+                                                                              <th scope="col">Sub Grup</th>
+                                                                              <th scope="col" style="color:red;"><i class="fa fa-trash"></i></th>
+                                                                           </tr>
+                                                                        </thead>
+                                                                        <tbody id="contdata_cppt"></tbody>
+                                                                     </table>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <!--end tindakan-->
+                                                   </div>
+                                                   <div class="col-md-12" style="margin-top:30px">
+                                                      <div class="form-group">
+                                                         <h4>RESEP ONLINE</h4>
+                                                         <hr>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-md-12">
+                                                      <!--
+                                                         <div class="form-group">
+                                                           <label class="control-label"><strong>RESEP ONLINE</strong></label>
+                                                         </div>
+                                                         -->
+                                                      <div class="form-group" id="box_new_eresep">
+                                                         <div class="col-sm-12 text-center">
+                                                            <h5>Loading page content, please wait...</h5>
+                                                            <img src="<?php echo base_url('assets/img/loading-balls.gif'); ?>" alt="Loading Page">
+                                                         </div>
+                                                      </div>
+                                                      <div class="form-group row">
+                                                         <label class="col-sm-2 col-form-label">BEFORE</label>
+                                                         <div class="col-sm-4">
+                                                            <input type="file" name="filedetail_dok_1" id="filedetail_dok_1" placeholder="Upload" class="form-control">
+                                                         </div>
+                                                         <label class="col-sm-2 col-form-label">AFTER</label>
+                                                         <div class="col-sm-4">
+                                                            <input type="file" name="filedetail_dok_2" id="filedetail_dok_2" placeholder="Upload" class="form-control">
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="col-md-12 text-center" style="margin-top:30px;">
+                                                      <button type="submit" class="btn btn-success" style="font-size:22px"> <i class="fa fa-check"></i> SIMPAN SEMUA CPPT </button>
+                                                   </div>
+                                                </form>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--end tab-->
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="styleSelector"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+   <?php  ?>
+   <?php $this->theme->wrapper_close('theme_default'); ?>
+   <?php $this->theme->script('theme_default'); ?>
+   <?php require_once(APPPATH.'../assets/app_hn/soapfnc/mnu-cmp-js.php');?>
+   <script src=<?php echo base_url('assets/app_hn/soapfnc/fncsoap.js'); ?>></script>

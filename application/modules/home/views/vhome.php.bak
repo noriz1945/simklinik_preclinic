@@ -1,0 +1,210 @@
+
+
+<?php $this->theme->head('theme_default'); ?>
+<title>Zia Aesthetic</title>
+
+<?php $this->theme->wrapper_open('theme_default'); ?>
+<?php require_once(APPPATH.'../assets/app_hn/dshome/dshome-cmp-css.php');?>
+
+<style>
+.graph_1 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.graph_2 {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+</style>
+
+
+<div class="pcoded-content">
+
+<div class="pcoded-inner-content">
+<div class="main-body">
+<div class="page-wrapper">
+<div class="page-body">
+
+<div class="row">
+
+<div class="page-header card">
+<div class="row align-items-end">
+
+
+</div>
+</div>
+
+<div class="col-xl-12 col-md-12">
+<div class="card">
+<div class="card-header">
+<h5>KLINIK UTAMA LYND</h5>
+</div>
+<!--tab section-->
+<div class="card-block tab-icon">
+
+<div class="row">
+<div class="col-lg-12 col-xl-12">
+
+--- Selamat Datang <?php echo $this->session->userdata['sp']->name; ?> ---
+
+<div class="col-lg-12 col-xl-12">
+<div class="card-header">
+<h5>Dashboard Kunjungan (Mingguan)</h5>
+</div>
+ <div class="form-group row">
+    <div class="col-sm-2">
+    <input type="text" class="form-control tgl_1_dash_1" name="tgl_dash_1" id="tgl_dash_1" placeholder="Tanggal Mulai" value="<?php echo DATE('Y-m-d'); ?>">
+    </div>
+    <!--<div class="col-sm-2">
+    <input type="text" class="form-control tgl_2_dash_1" name="tgl_dash_2" id="tgl_dash_2"  placeholder="Tanggal Akhir" value="<?php echo $tgl_2; ?>">
+    </div>-->
+ </div>
+<!--<select class="form-control changetypegraph">
+<option value="0" selected default>Tipe Grafik</option>
+<option value="1">Tipe 1</option>
+<option value="2">Tipe 2</option>
+<option value="3">Tipe 3</option>
+<option value="4">Tipe 4</option>
+</select>-->
+<div id="chart"></div>
+</div>
+<div class="col-lg-12 col-xl-12">
+<div class="card-header">
+<h5>Dashboard Farmasi (Mingguan)</h5>
+</div>
+ <div class="form-group row">
+    <div class="col-sm-2">
+    <input type="text" class="form-control tgl_1_dash_2" name="tgl_dash_2" id="tgl_dash_2" placeholder="Tanggal Mulai" value="<?php echo DATE('Y-m-d'); ?>">
+    </div>
+    <!--<div class="col-sm-2">
+    <input type="text" class="form-control tgl_2_dash_1" name="tgl_dash_2" id="tgl_dash_2"  placeholder="Tanggal Akhir" value="<?php echo $tgl_2; ?>">
+    </div>-->
+ </div>
+<!--<select class="form-control changetypegraph">
+<option value="0" selected default>Tipe Grafik</option>
+<option value="1">Tipe 1</option>
+<option value="2">Tipe 2</option>
+<option value="3">Tipe 3</option>
+<option value="4">Tipe 4</option>
+</select>-->
+<div id="chart_farmasi"></div>
+</div>
+
+
+
+<div class="col-lg-12 col-xl-12">
+<div class="card-header">
+<h5>Dashboard Kunjungan (Bulanan)</h5>
+</div>
+ <div class="form-group row">
+    <div class="col-sm-2">
+    <select class="form-control selmst_bulan" id="selmst_bulan" name="selmst_bulan">
+    <option selected="selected" default value="0">BULAN</option>
+    <?php
+    $bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+    $jlh_bln=count($bulan);
+    for($c=0; $c<$jlh_bln; $c+=1){
+        if(strlen($c+1) < 2){ $c_set = "0".($c+1);} else { $c_set = ($c+1);}
+        if(date('m')==$c_set){
+            $sel_month="selected";
+        }else{
+            $sel_month="";
+        }
+        
+        echo"<option value='$c_set' $sel_month> $bulan[$c] </option>";
+    }
+    ?>
+    </select>
+    </div>
+    <div class="col-sm-2">
+    <select class="form-control selmst_tahun" id="selmst_tahun" name="selmst_tahun">
+    <option selected="selected" default value="0">TAHUN</option>
+    <?php	$mulai= date('Y') - 10;
+		for($i = $mulai;$i<$mulai + 15;$i++){
+		?>			
+			<option value='<?php echo $i; ?>'<?php if($i==date('Y')){ echo " selected";}?> ><?php echo $i; ?></option>
+		
+			<?php
+		}
+		?>
+	
+		</select>
+    </div>
+ </div>
+<div class="graph_1" style="overflow-y: scroll; height:600px;width:auto;margin-bottom:10px;"></div>
+</div>
+
+<div class="col-lg-12 col-xl-12">
+<div class="card-header">
+<h5>Dashboard Farmasi (Bulanan)</h5>
+</div>
+ <div class="form-group row">
+    <div class="col-sm-2">
+    <select class="form-control farm_selmst_bulan" id="farm_selmst_bulan" name="farm_selmst_bulan">
+    <option selected="selected" default value="0">BULAN</option>
+    <?php
+    $bulan=array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+    $jlh_bln=count($bulan);
+    for($c=0; $c<$jlh_bln; $c+=1){
+        if(strlen($c+1) < 2){ $c_set = "0".($c+1);} else { $c_set = ($c+1);}
+        if(date('m')==$c_set){
+            $sel_month="selected";
+        }else{
+            $sel_month="";
+        }
+        
+        echo"<option value='$c_set' $sel_month> $bulan[$c] </option>";
+    }
+    ?>
+    </select>
+    </div>
+    <div class="col-sm-2">
+    <select class="form-control farm_selmst_tahun" id="farm_selmst_tahun" name="farm_selmst_tahun">
+    <option selected="selected" default value="0">TAHUN</option>
+    <?php	$mulai= date('Y') - 10;
+		for($i = $mulai;$i<$mulai + 15;$i++){
+		?>			
+			<option value='<?php echo $i; ?>'<?php if($i==date('Y')){ echo " selected";}?> ><?php echo $i; ?></option>
+		
+			<?php
+		}
+		?>
+	
+		</select>
+    </div>
+ </div>
+<div class="graph_2" style="overflow-y: scroll; height:600px;width:auto;margin-bottom:10px;"></div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--End section from wrapper_open-->
+<?php $this->theme->wrapper_close('theme_default'); ?>
+<?php $this->theme->script('theme_default'); ?>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<?php require_once(APPPATH.'../assets/app_hn/dshome/dshome-cmp-js.php');?>
+<script src=<?php echo base_url('assets/app_hn/dshome/dshome.js'); ?>></script>

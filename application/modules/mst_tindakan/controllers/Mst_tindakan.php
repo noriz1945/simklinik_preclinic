@@ -21,15 +21,23 @@ class Mst_tindakan extends MX_Controller
     {
         $data['datalist'] = $this->M_tindakan->list_tindakan();
         $data['datalistgroup'] = $this->M_tindakan->list_group();
-        $this->load->view('mst/views/mst_tindakan', $data);
+        
+        // CORRECTION: Mencoba path view yang lebih standar untuk HMVC
+        // Opsi 1: $this->load->view('mst_tindakan', $data);
+        // Opsi 2: $this->load->view('mst_tindakan/mst_tindakan', $data);
+        
+        // Kita coba pakai format 'mudul/view' (tanpa folder 'views' eksplisit)
+        $this->load->view('mst_tindakan', $data); 
     }
 
     public function mst_tindakan_grup()
     {
         $data['datalist'] = $this->M_tindakan->list_group();
-        $this->load->view('mst/views/mst_tindakan_grup', $data);
+        $this->load->view('mst_tindakan_grup', $data);
     }
-
+    
+    // ... function save/update lainnya tetap sama ...
+    
     public function save_tindakan_grup()
     {
         $data = [
@@ -39,7 +47,7 @@ class Mst_tindakan extends MX_Controller
             'created_at' => date('Y-m-d H:i:s')
         ];
         $this->M_tindakan->insert_group($data);
-        redirect('mst/mst_tindakan_grup');
+        redirect('mst_tindakan/mst_tindakan_grup');
     }
 
     public function update_tindakan_grup()
@@ -51,7 +59,7 @@ class Mst_tindakan extends MX_Controller
             'updated_at' => date('Y-m-d H:i:s')
         ];
         $this->M_tindakan->update_group($id, $data);
-        redirect('mst/mst_tindakan_grup');
+        redirect('mst_tindakan/mst_tindakan_grup');
     }
 
     public function deleteitempo_tindakan_grup()

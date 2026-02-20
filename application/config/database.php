@@ -6,10 +6,10 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn' => '',
 	'hostname' => 'localhost',
-	'username' => 'sariasih_root',
-	'password' => 'kebumen38',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'sariasih_simklinikdev',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -29,10 +29,10 @@ $db['default'] = array(
 );
 
 $db['default2'] = array(
-	'dsn'	=> '',
+	'dsn' => '',
 	'hostname' => 'localhost',
-	'username' => 'sariasih_root',
-	'password' => 'kebumen38',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'sariasih_simklinikdev',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -52,10 +52,10 @@ $db['default2'] = array(
 );
 
 $db['default3'] = array(
-	'dsn'	=> '',
+	'dsn' => '',
 	'hostname' => 'localhost',
-	'username' => 'sariasih_root',
-	'password' => 'kebumen38',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'sariasih_simklinikdev',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
